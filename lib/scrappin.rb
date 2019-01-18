@@ -13,18 +13,7 @@ cryptovalue = page.xpath('//*[@class="price"]').collect(&:text)
  #&: = .each do { |x| x .eoknvreb }
 
 A = Hash[cryptocurrencies.zip(cryptovalue)]
-A.each {|k, v| A[k] = (v.delete"$").to_f}
-
-annuaire = Nokogiri::HTML(open("http://annuaire-des-mairies.com/val-d-oise.html"))
-
-get_townhall_urls = annuaire.xpath('//*[@class="lientxt"]').collect(&:text)
+A.each {|k, v| A[k] = v.delete('$').to_f}
 
 
-# essai = page.css('tr')[3]('td')[1].text
-
-
-urlableiges = Nokogiri::HTML(open("http://annuaire-des-mairies.com/95/ableiges.html"))
-def get_townhall_email(urlableiges)
-puts	urlableiges.css(('tr')[3],('td')[1]).text
-end
-get_townhall_email(urlableiges)
+puts A
